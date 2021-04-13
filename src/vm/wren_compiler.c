@@ -619,6 +619,54 @@ static Keyword keywords[] =
   {"true",      4, TOKEN_TRUE},
   {"var",       3, TOKEN_VAR},
   {"while",     5, TOKEN_WHILE},
+
+  // Spanish
+  {"rompe",     5, TOKEN_BREAK},
+  {"sigue",     5, TOKEN_CONTINUE},
+  {"clase",     5, TOKEN_CLASS},
+  {"constructor", 11, TOKEN_CONSTRUCT},
+  
+  {"o",         1, TOKEN_ELSE},
+  {"sino",      4, TOKEN_ELSE},
+  {"falso",     5, TOKEN_FALSE},
+
+  {"para",      4, TOKEN_FOR},
+
+  // Consideramos el acento
+  {"foraneo",   7, TOKEN_FOREIGN},
+  {"foráneo",   7, TOKEN_FOREIGN},
+
+  {"si",        2, TOKEN_IF},
+  {"carga",     5, TOKEN_IMPORT},
+
+  {"como",      4, TOKEN_AS},
+  {"en",        2, TOKEN_IN},
+  {"es",        2, TOKEN_IS},
+  {"nulo",      4, TOKEN_NULL},
+
+  {"retorna",   7, TOKEN_RETURN},
+
+  // Se prefirío "social" frente a "estático" o "estable"
+  // debido a que es más simple de escribir
+  // y se entiende como un método o propiedad
+  // que puede ser accedido sin necesidad 
+  // de crear una instancia. Es un método o propiedad
+  // más "sociable"
+  {"social",    6, TOKEN_STATIC},
+
+  {"padre",     5, TOKEN_SUPER},
+
+  // Para propiedades de una unidad o varias
+  // mi.color o mis.colores
+  {"mi",        2, TOKEN_THIS},
+  {"mis",       3, TOKEN_THIS},
+
+  {"cierto",    6, TOKEN_TRUE},
+
+  // Var de variable. Se omite ya que está definida en Inglés
+  // {"var",       3, TOKEN_VAR},
+  {"mientras",  7, TOKEN_WHILE},
+
   {NULL,        0, TOKEN_EOF} // Sentinel to mark the end of the array.
 };
 

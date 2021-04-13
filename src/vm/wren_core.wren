@@ -5,6 +5,7 @@ class Null {}
 class Num {}
 
 class Sequence {
+
   all(f) {
     var result = true
     for (element in this) {
@@ -116,6 +117,24 @@ class Sequence {
     }
     return result
   }
+
+  // Spanish
+  todos(f){all(f)}
+  cualquiera(f){any(f)}
+  contiene(elemento){contains(elemento)}
+  largo {count}
+  largo(f) {largo(f)}
+  cadaUno(f) {each(f)}
+  limpio {isEmpty}
+  mapa(transformacion) {map(transformacion)}
+  saltar(contador) {skip(contador)}
+  tomar(contador){take(contador)}
+  donde(predicado){where(predicado)}
+  reducir(acumulador, f) {reduce(acumulador, f)}
+  reducir(f) {reduce(f)}
+  unir() {join()}
+  unir(sep){join(sep)}
+  aLista {toList}
 }
 
 class MapSequence is Sequence {
@@ -289,6 +308,16 @@ class String is Sequence {
     }
     return result
   }
+
+  // Spanish
+  separar(delimitador) {split(delimitador)}
+  cambiar(original, por) {replace(original, por)}
+  truncar() {trim()}
+  truncar(caracteres) {trim(caracteres)}
+  truncarFinal(){trimEnd()}
+  truncarFinal(caracteres){trimEnd(caracteres)}
+  truncarInicio(){trimStart()}
+  truncarInicio(caracteres){trimStart(caracteres)}
 }
 
 class StringByteSequence is Sequence {
@@ -301,6 +330,9 @@ class StringByteSequence is Sequence {
   iteratorValue(iterator) { _string.byteAt_(iterator) }
 
   count { _string.byteCount_ }
+
+  // Spanish
+  largo {count}
 }
 
 class StringCodePointSequence is Sequence {
@@ -313,6 +345,9 @@ class StringCodePointSequence is Sequence {
   iteratorValue(iterator) { _string.codePointAt_(iterator) }
 
   count { _string.count }
+
+  // Spanish
+  largo {count}
 }
 
 class List is Sequence {
@@ -379,6 +414,12 @@ class List is Sequence {
     }
     return result
   }
+
+  // Spanish
+  agregarTodos(seq) {addAll(seq)}
+  ordenar(){sort()}
+  ordernar(comp){sort(comp)}
+  aFrase {toString}
 }
 
 class Map is Sequence {
@@ -403,6 +444,11 @@ class Map is Sequence {
         keyIteratorValue_(iterator),
         valueIteratorValue_(iterator))
   }
+
+  // Spanish
+  llaves { keys }
+  valores { values }
+  aFrase {toString}
 }
 
 class MapEntry {
@@ -470,6 +516,13 @@ class System {
       writeString_("[invalid toString]")
     }
   }
+
+  // Spanish
+  static imprime() {print()}
+  static imprime(obj) {print(obj)}
+  static imprimeTodo(seq) {printAll(seq)}
+  static escribe(obj){write(obj)}
+  static escribeTodo(seq){writeAll(seq)}
 }
 
 class ClassAttributes {
@@ -480,4 +533,23 @@ class ClassAttributes {
     _methods = methods
   }
   toString { "attributes:%(_attributes) methods:%(_methods)" }
+
+  // Spanish
+  yo { _attributes }
+  metodos { _methods }
+  construct nuevo(attributes, methods) {
+    _attributes = attributes
+    _methods = methods
+  }
+  aFrase { toString }
 }
+
+// Spanish
+var Fibra = Fiber
+var Nulo = Null
+var Rango = Range
+var Mapa = Map
+var Frase = String
+var Lista = List
+var Secuencia = Sequence
+var Sistema = System

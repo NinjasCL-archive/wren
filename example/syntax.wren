@@ -26,7 +26,7 @@ class SyntaxExample {
   }
 
   // Constructor with arguments
-  construct constructor(a, b) {
+  construct myConstructor(a, b) {
     print(a, b)
     field = a
   }

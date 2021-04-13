@@ -1251,6 +1251,9 @@ void wrenInitializeCore(WrenVM* vm)
   PRIMITIVE(vm->objectClass, "toString", object_toString);
   PRIMITIVE(vm->objectClass, "type", object_type);
 
+  PRIMITIVE(vm->objectClass, "aFrase", object_toString); // Spanish
+  PRIMITIVE(vm->objectClass, "tipo", object_type); // Spanish
+
   // Now we can define Class, which is a subclass of Object.
   vm->classClass = defineClass(vm, coreModule, "Class");
   wrenBindSuperclass(vm, vm->classClass, vm->objectClass);
@@ -1258,6 +1261,11 @@ void wrenInitializeCore(WrenVM* vm)
   PRIMITIVE(vm->classClass, "supertype", class_supertype);
   PRIMITIVE(vm->classClass, "toString", class_toString);
   PRIMITIVE(vm->classClass, "attributes", class_attributes);
+
+  PRIMITIVE(vm->classClass, "nombre", class_name); // Spanish
+  PRIMITIVE(vm->classClass, "supertipo", class_supertype);
+  PRIMITIVE(vm->classClass, "aFrase", class_toString);
+  PRIMITIVE(vm->classClass, "atributos", class_attributes);
 
   // Finally, we can define Object's metaclass which is a subclass of Class.
   ObjClass* objectMetaclass = defineClass(vm, coreModule, "Object metaclass");
@@ -1272,6 +1280,7 @@ void wrenInitializeCore(WrenVM* vm)
   wrenBindSuperclass(vm, objectMetaclass, vm->classClass);
 
   PRIMITIVE(objectMetaclass, "same(_,_)", object_same);
+  PRIMITIVE(objectMetaclass, "igual(_,_)", object_same); // Spanish
 
   // The core class diagram ends up looking like this, where single lines point
   // to a class's superclass, and double lines point to its metaclass:
@@ -1301,6 +1310,7 @@ void wrenInitializeCore(WrenVM* vm)
   vm->boolClass = AS_CLASS(wrenFindVariable(vm, coreModule, "Bool"));
   PRIMITIVE(vm->boolClass, "toString", bool_toString);
   PRIMITIVE(vm->boolClass, "!", bool_not);
+  PRIMITIVE(vm->boolClass, "aFrase", bool_toString); // Spanish
 
   vm->fiberClass = AS_CLASS(wrenFindVariable(vm, coreModule, "Fiber"));
   PRIMITIVE(vm->fiberClass->obj.classObj, "new(_)", fiber_new);
@@ -1319,8 +1329,25 @@ void wrenInitializeCore(WrenVM* vm)
   PRIMITIVE(vm->fiberClass, "try()", fiber_try);
   PRIMITIVE(vm->fiberClass, "try(_)", fiber_try1);
 
+  // Spanish
+  PRIMITIVE(vm->fiberClass->obj.classObj, "nueva(_)", fiber_new);
+  PRIMITIVE(vm->fiberClass->obj.classObj, "abortar(_)", fiber_abort);
+  PRIMITIVE(vm->fiberClass->obj.classObj, "actual", fiber_current);
+  PRIMITIVE(vm->fiberClass->obj.classObj, "suspender()", fiber_suspend);
+  PRIMITIVE(vm->fiberClass->obj.classObj, "ceder()", fiber_yield);
+  PRIMITIVE(vm->fiberClass->obj.classObj, "ceder(_)", fiber_yield1);
+  PRIMITIVE(vm->fiberClass, "llamar()", fiber_call);
+  PRIMITIVE(vm->fiberClass, "llamar(_)", fiber_call1);
+  PRIMITIVE(vm->fiberClass, "finalizada", fiber_isDone);
+  PRIMITIVE(vm->fiberClass, "transferir()", fiber_transfer);
+  PRIMITIVE(vm->fiberClass, "transferir(_)", fiber_transfer1);
+  PRIMITIVE(vm->fiberClass, "transferirError(_)", fiber_transferError);
+  PRIMITIVE(vm->fiberClass, "intentar()", fiber_try);
+  PRIMITIVE(vm->fiberClass, "intentar(_)", fiber_try1);
+
   vm->fnClass = AS_CLASS(wrenFindVariable(vm, coreModule, "Fn"));
   PRIMITIVE(vm->fnClass->obj.classObj, "new(_)", fn_new);
+
 
   PRIMITIVE(vm->fnClass, "arity", fn_arity);
 
@@ -1344,9 +1371,32 @@ void wrenInitializeCore(WrenVM* vm)
   
   PRIMITIVE(vm->fnClass, "toString", fn_toString);
 
+  // Spanish
+  PRIMITIVE(vm->fnClass->obj.classObj, "nueva(_)", fn_new);
+  PRIMITIVE(vm->fnClass, "aridad", fn_arity);
+  PRIMITIVE(vm->fnClass, "aFrase", fn_toString);
+  FUNCTION_CALL(vm->fnClass, "llamar()", fn_call0);
+  FUNCTION_CALL(vm->fnClass, "llamar(_)", fn_call1);
+  FUNCTION_CALL(vm->fnClass, "llamar(_,_)", fn_call2);
+  FUNCTION_CALL(vm->fnClass, "llamar(_,_,_)", fn_call3);
+  FUNCTION_CALL(vm->fnClass, "llamar(_,_,_,_)", fn_call4);
+  FUNCTION_CALL(vm->fnClass, "llamar(_,_,_,_,_)", fn_call5);
+  FUNCTION_CALL(vm->fnClass, "llamar(_,_,_,_,_,_)", fn_call6);
+  FUNCTION_CALL(vm->fnClass, "llamar(_,_,_,_,_,_,_)", fn_call7);
+  FUNCTION_CALL(vm->fnClass, "llamar(_,_,_,_,_,_,_,_)", fn_call8);
+  FUNCTION_CALL(vm->fnClass, "llamar(_,_,_,_,_,_,_,_,_)", fn_call9);
+  FUNCTION_CALL(vm->fnClass, "llamar(_,_,_,_,_,_,_,_,_,_)", fn_call10);
+  FUNCTION_CALL(vm->fnClass, "llamar(_,_,_,_,_,_,_,_,_,_,_)", fn_call11);
+  FUNCTION_CALL(vm->fnClass, "llamar(_,_,_,_,_,_,_,_,_,_,_,_)", fn_call12);
+  FUNCTION_CALL(vm->fnClass, "llamar(_,_,_,_,_,_,_,_,_,_,_,_,_)", fn_call13);
+  FUNCTION_CALL(vm->fnClass, "llamar(_,_,_,_,_,_,_,_,_,_,_,_,_,_)", fn_call14);
+  FUNCTION_CALL(vm->fnClass, "llamar(_,_,_,_,_,_,_,_,_,_,_,_,_,_,_)", fn_call15);
+  FUNCTION_CALL(vm->fnClass, "llamar(_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_)", fn_call16);
+
   vm->nullClass = AS_CLASS(wrenFindVariable(vm, coreModule, "Null"));
   PRIMITIVE(vm->nullClass, "!", null_not);
   PRIMITIVE(vm->nullClass, "toString", null_toString);
+  PRIMITIVE(vm->nullClass, "aFrase", null_toString);
 
   vm->numClass = AS_CLASS(wrenFindVariable(vm, coreModule, "Num"));
   PRIMITIVE(vm->numClass->obj.classObj, "fromString(_)", num_fromString);

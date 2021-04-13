@@ -43,8 +43,8 @@ System.print(f13.call(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13)) // expect: 91
 var f14 = Fn.new {|a, b, c, d, e, f, g, h, i, j, k, l, m, n| a + b + c + d + e + f + g + h + i + j + k + l + m + n }
 System.print(f14.call(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14)) // expect: 105
 
-var f15 = Fn.new {|a, b, c, d, e, f, g, h, i, j, k, l, m, n, o| a + b + c + d + e + f + g + h + i + j + k + l + m + n + o }
+var f15 = Fn.new {|a, b, c, d, e, f, g, h, i, j, k, l, m, n, u| a + b + c + d + e + f + g + h + i + j + k + l + m + n + u }
 System.print(f15.call(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15)) // expect: 120
 
-var f16 = Fn.new {|a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p| a + b + c + d + e + f + g + h + i + j + k + l + m + n + o + p }
+var f16 = Fn.new {|a, b, c, d, e, f, g, h, i, j, k, l, m, n, u, p| a + b + c + d + e + f + g + h + i + j + k + l + m + n + u + p }
 System.print(f16.call(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)) // expect: 136

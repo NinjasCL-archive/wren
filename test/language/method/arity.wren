@@ -16,8 +16,8 @@ class Foo {
   method(a, b, c, d, e, f, g, h, i, j, k, l) { a + b + c + d + e + f + g + h + i + j + k + l}
   method(a, b, c, d, e, f, g, h, i, j, k, l, m) { a + b + c + d + e + f + g + h + i + j + k + l + m}
   method(a, b, c, d, e, f, g, h, i, j, k, l, m, n) { a + b + c + d + e + f + g + h + i + j + k + l + m + n}
-  method(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o) { a + b + c + d + e + f + g + h + i + j + k + l + m + n + o}
-  method(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p) { a + b + c + d + e + f + g + h + i + j + k + l + m + n + o + p}
+  method(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o2) { a + b + c + d + e + f + g + h + i + j + k + l + m + n + o2}
+  method(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o2, p) { a + b + c + d + e + f + g + h + i + j + k + l + m + n + o2 + p}
 }
 
 var foo = Foo.new()
